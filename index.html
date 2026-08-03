@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<title>Almara São Manoel</title>
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ══════════ 00 · MODO ATRAIR ══════════ -->
+  <section class="screen is-on" id="s-attract" data-screen="attract">
+    <div class="attract-bg" id="attractBg"></div>
+    <div class="attract-veil"></div>
+    <div class="attract-mid">
+      <img class="attract-mark" src="brand/logotipo.png" alt="Almara São Manoel">
+      <p class="attract-line" id="attractLine"></p>
+    </div>
+    <div class="attract-cue"><span class="cue-dot"></span>toque para começar</div>
+  </section>
+
+  <!-- ══════════ 01 · ABERTURA ══════════ -->
+  <section class="screen" id="s-abertura" data-screen="abertura">
+    <div class="ab-bg"></div>
+    <div class="ab-veil"></div>
+    <div class="ab-stage"><p class="ab-text" id="abText"></p></div>
+    <div class="ab-ticks" id="abTicks"></div>
+    <button class="ab-skip" data-go="plano">pular</button>
+  </section>
+
+  <!-- ══════════ 02 · O LUGAR ══════════ -->
+  <section class="screen" id="s-lugar" data-screen="lugar">
+    <header class="bar">
+      <img class="bar-mark" src="brand/logotipo-sm.png" alt="Almara São Manoel">
+      <span class="bar-meta"><span id="lugarPos">1</span> de 5 · o lugar</span>
+    </header>
+    <div class="lugar-track" id="lugarTrack"></div>
+    <div class="lugar-dots" id="lugarDots"></div>
+    <nav class="rail" id="rail5"></nav>
+  </section>
+
+  <!-- ══════════ 03 · A IMPLANTAÇÃO (casa) ══════════ -->
+  <section class="screen" id="s-plano" data-screen="plano">
+    <header class="bar">
+      <img class="bar-mark" src="brand/logotipo-sm.png" alt="Almara São Manoel">
+      <div class="bar-acts">
+        <button class="btn btn-ghost" data-ovl="seguranca">segurança</button>
+        <button class="btn" data-ovl="ficha">ficha técnica</button>
+      </div>
+    </header>
+
+    <div class="plano-body">
+      <aside class="plano-side">
+        <h1 class="side-title">A implantação</h1>
+
+        <div class="figs">
+          <div class="fig"><b>56,7</b><span>hectares</span></div>
+          <div class="fig"><b>263</b><span>lotes residenciais</span></div>
+          <div class="fig"><b>84.991</b><span>m² de lagos</span></div>
+        </div>
+
+        <p class="side-rule">as quatro orlas</p>
+        <ul class="lakes" id="lakeList"></ul>
+
+        <p class="side-note">Toque em um lago no plano ou na lista ao lado.</p>
+      </aside>
+
+      <div class="plano-stage" id="planoStage">
+        <div class="plano-canvas" id="planoCanvas">
+          <img class="plano-img" id="planoImg" src="brand/masterplan.jpg" alt="Masterplan Almara São Manoel" draggable="false">
+        </div>
+        <div class="plano-hots" id="planoHots"></div>
+        <div class="plano-tools">
+          <button class="tool" id="zoomOut" aria-label="Afastar">–</button>
+          <button class="tool" id="zoomReset">enquadrar</button>
+          <button class="tool" id="zoomIn" aria-label="Aproximar">+</button>
+        </div>
+        <p class="plano-hint" id="planoHint">arraste para mover · use dois dedos para ampliar</p>
+      </div>
+    </div>
+    <nav class="rail" id="rail"></nav>
+  </section>
+
+  <!-- ══════════ 04 · ORLA ══════════ -->
+  <section class="screen" id="s-orla" data-screen="orla">
+    <header class="bar">
+      <div class="bar-left">
+        <button class="btn btn-ghost" data-go="plano">← masterplan</button>
+        <span class="bar-title" id="orlaBarTitle"></span>
+      </div>
+      <span class="bar-meta" id="orlaArea"></span>
+    </header>
+
+    <div class="orla-body">
+      <div class="orla-main">
+        <div class="orla-hero" id="orlaHero">
+          <img id="orlaHeroImg" alt="" draggable="false">
+          <div class="orla-cap"><span id="orlaCap"></span></div>
+          <button class="btn btn-solid orla-zoom" id="orlaZoom">ampliar</button>
+        </div>
+        <div class="orla-strip" id="orlaStrip"></div>
+      </div>
+      <aside class="orla-side">
+        <p class="kicker" id="orlaRef"></p>
+        <h2 class="orla-title" id="orlaTitle"></h2>
+        <ul class="prog" id="orlaProg"></ul>
+      </aside>
+    </div>
+
+    <nav class="rail rail-orla">
+      <button class="rail-side" id="orlaPrev"></button>
+      <span class="rail-mid" id="orlaMid"></span>
+      <button class="rail-side rail-side-r" id="orlaNext"></button>
+    </nav>
+  </section>
+
+  <!-- ══════════ 05 · O LOTE ══════════ -->
+  <section class="screen" id="s-lote" data-screen="lote">
+    <header class="bar">
+      <img class="bar-mark" src="brand/logotipo-sm.png" alt="Almara São Manoel">
+      <span class="bar-meta">terrenos de 620 a 2.900 m²</span>
+    </header>
+    <div class="lote-body">
+      <aside class="lote-side">
+        <p class="stack">
+          <span class="stack-caps">O fundo do lote</span>
+          <span class="stack-caps">é o começo da</span>
+          <span class="stack-script">paisagem.</span>
+        </p>
+        <p class="lote-copy">No Almara, os lotes foram pensados com fundos para os lagos. A residência se abre para o jardim, para a luz e para uma paisagem que acompanha a casa todos os dias.</p>
+        <p class="lote-copy">Não é apenas uma vista. É uma condição de moradia presente na própria implantação.</p>
+        <p class="side-rule">todos os lotes com fundos para os lagos</p>
+      </aside>
+      <div class="lote-stage">
+        <div class="corte" id="corte"></div>
+        <p class="lote-hint">toque em cada etapa do percurso</p>
+      </div>
+    </div>
+    <nav class="rail" id="rail2"></nav>
+  </section>
+
+  <!-- ══════════ 06 · EXTERNOS ══════════ -->
+  <section class="screen" id="s-externos" data-screen="externos">
+    <header class="bar">
+      <img class="bar-mark" src="brand/logotipo-sm.png" alt="Almara São Manoel">
+      <span class="bar-meta">externos ao empreendimento</span>
+    </header>
+    <div class="ext-body" id="extBody"></div>
+    <nav class="rail" id="rail3"></nav>
+  </section>
+
+  <!-- ══════════ 07 · CONTATO ══════════ -->
+  <section class="screen" id="s-contato" data-screen="contato">
+    <div class="fim-bg"></div>
+    <div class="fim-veil"></div>
+    <div class="fim-mid">
+      <img class="fim-mark" src="brand/logotipo.png" alt="Almara São Manoel">
+      <p class="fim-script">À altura da sua história.</p>
+      <div class="fim-qr">
+        <div class="qr" id="qrBox"></div>
+        <div class="fim-qr-txt">
+          <span class="kicker">leve o projeto com você</span>
+          <span class="fim-url">almarasaomanoel.com.br</span>
+        </div>
+      </div>
+    </div>
+    <p class="fim-legal">Empreendimento localizado em Sorriso/MT, desenvolvido por Loteamento São Manoel SPE Ltda., CNPJ 52.995.872/0001-30. Perspectivas e imagens meramente ilustrativas.</p>
+    <nav class="rail" id="rail4"></nav>
+  </section>
+
+  <!-- ══════════ SOBREPOSIÇÕES ══════════ -->
+  <div class="ovl" id="ovlFicha">
+    <div class="ovl-card">
+      <div class="ovl-head">
+        <h2>Ficha técnica</h2>
+        <button class="btn btn-ghost" data-close>fechar</button>
+      </div>
+      <div class="ovl-cols">
+        <div>
+          <p class="side-rule">dimensões</p>
+          <dl class="dl">
+            <div><dt>Área total</dt><dd>567.639 m²</dd></div>
+            <div><dt>Área aproximada</dt><dd>56,7 hectares</dd></div>
+            <div><dt>Unidades autônomas</dt><dd>263</dd></div>
+            <div><dt>Terrenos</dt><dd>620 – 2.900 m²</dd></div>
+            <div><dt>Área de lagos</dt><dd>84.991,13 m²</dd></div>
+            <div><dt>Área verde</dt><dd>56.909,61 m²</dd></div>
+            <div><dt>Preservação permanente</dt><dd>104.822,62 m²</dd></div>
+            <div><dt>Área comum, incluindo lagos</dt><dd>108.338,93 m²</dd></div>
+            <div><dt>Sistema viário</dt><dd>73.030,60 m²</dd></div>
+          </dl>
+        </div>
+        <div>
+          <p class="side-rule">os quatro lagos</p>
+          <dl class="dl">
+            <div><dt>Abaeté</dt><dd>30.300,63 m²</dd></div>
+            <div><dt>Paranoá</dt><dd>24.972,31 m²</dd></div>
+            <div><dt>Rodrigo de Freitas</dt><dd>23.123,18 m²</dd></div>
+            <div><dt>Pampulha</dt><dd>6.595,01 m²</dd></div>
+          </dl>
+          <p class="ovl-flag">37,86% da área comercializável destinada aos lagos.<br>Todos os lotes com fundos para os lagos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ovl" id="ovlSeguranca">
+    <div class="ovl-card">
+      <div class="ovl-head">
+        <h2>Segurança planeada em cada acesso</h2>
+        <button class="btn btn-ghost" data-close>fechar</button>
+      </div>
+      <div class="ovl-cols">
+        <div>
+          <ul class="prog">
+            <li>Portaria social</li>
+            <li>Portaria de serviços</li>
+            <li>Acessos organizados para moradores, visitantes e equipes</li>
+            <li>Controle de acesso</li>
+          </ul>
+        </div>
+        <div>
+          <ul class="prog">
+            <li>Reconhecimento facial</li>
+            <li>Monitoramento por câmeras</li>
+            <li>Vigilância patrimonial</li>
+            <li>Perímetro protegido por muro</li>
+          </ul>
+        </div>
+      </div>
+      <div class="ovl-img"><img src="img/chegada.jpg" alt="Chegada e portaria" draggable="false"></div>
+    </div>
+  </div>
+
+  <!-- galeria em tela cheia -->
+  <div class="lb" id="lb">
+    <img class="lb-img" id="lbImg" alt="" draggable="false">
+    <div class="lb-cap" id="lbCap"></div>
+    <button class="btn btn-ghost lb-close" data-close>fechar ✕</button>
+    <div class="lb-strip" id="lbStrip"></div>
+    <span class="lb-hint">arraste ‹ ›</span>
+  </div>
+
+  <!-- aviso de sessão -->
+  <div class="idle" id="idle">
+    <p class="idle-txt">Voltando à tela inicial</p>
+    <div class="idle-bar"><i></i></div>
+    <button class="btn btn-solid" id="idleStay">continuar aqui</button>
+  </div>
+
+  <button class="lock" id="lock" title="Travar sessão">●</button>
+
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
