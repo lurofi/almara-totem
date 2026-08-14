@@ -37,6 +37,23 @@ const LUGAR = [
     copy:['Construída por trabalho, produção e visão de futuro, Sorriso alcançou uma nova dimensão.',
           'O Almara nasce desse momento: para quem já reconhece o valor de escolher bem e procura, dentro da própria cidade, uma forma mais completa de morar.'] },
 
+  { img:'loc-mapa', zoom:true,
+    caps:['O morar mais'], script:'exclusivo', capsFim:['do Centro-Oeste'],
+    copy:['O Almara fica na margem do rio, a poucos minutos do centro de Sorriso — perto do que a cidade oferece, longe do que ela tem de barulho.',
+          'Praça das Fontes, Igreja Matriz e a sede da Epicentro Empreendimentos ficam no mesmo eixo de deslocamento.'] },
+
+  { img:'loc-acessos', zoom:true,
+    caps:['Dois acessos','para'], script:'chegar.',
+    copy:['O empreendimento é servido por duas rotas independentes, que ligam o Almara à malha urbana de Sorriso por caminhos distintos.',
+          'A redundância de acesso preserva a chegada tranquila em qualquer horário e em qualquer condição de tráfego.'],
+    refs:[['Acesso 01','Pela MT-560, contornando a área de plantio a oeste.','#E0812B'],
+          ['Acesso 02','Pelo eixo urbano a leste, ligando ao centro da cidade.','#2BD46B']] },
+
+  { img:'implantacao-aerea', zoom:true,
+    caps:['O lugar,','visto de'], script:'cima.',
+    copy:['Cinquenta e seis hectares desenhados entre a mata nativa e o rio, com a silhueta de Sorriso no horizonte.',
+          'A escala do projeto aparece inteira: as faixas de lotes, os quatro lagos e a mata preservada que fecha o conjunto.'] },
+
   { img:'agua-teal',
     caps:['Um projeto nasce','de uma'], script:'visão.',
     copy:['À frente da Epicentro Empreendimentos, Thiago Alves Silva e Osmar Mello reúnem experiências construídas em diferentes setores da economia de Sorriso e do Centro-Oeste.',
@@ -60,25 +77,24 @@ const LUGAR = [
     caps:['A paisagem','começa no'], script:'desenho.',
     copy:['Arquitetura e paisagismo foram pensados para criar unidade sem apagar a individualidade de cada residência.',
           'O resultado é um lugar em que a arquitetura não se impõe à paisagem. Ela passa a fazer parte dela.'],
-    faces:[['time-1','Maristela Fedrizzi · urbanismo, arquitetônico e interiores'],
-           ['time-2','Ronaldo Moraes · paisagismo'],
-           ['time-3','Eduarda Lucini · infraestrutura']] }
+    faces:[['time-1','Maristela Fedrizzi','Maristela Fedrizzi Arquitetura','Urbanismo, arquitetônico e interiores'],
+           ['time-2','Ronaldo Moraes','Forma Garden Arquitetura Paisagística','Paisagismo'],
+           ['time-3','Eduarda Lucini','Lucini Infra e Urbanismo','Infraestrutura']] }
 ];
 
 /* Pontos de toque no masterplan. Obtidos por segmentação de cor da lâmina
-   d'água seguida de transformada de distância — cada ponto é o lugar mais
-   interno do lago, e não o centroide (que num lago em arco cai em terra).
-   Coordenadas em fração da largura/altura do render. */
+   d'água — cada ponto fica na borda esquerda de cada lago (não mais no
+   centro geométrico), para não cobrir a lâmina d'água nem os lotes. */
 const ORLAS = [
   { id:'abaete', letra:'F', nome:'Abaeté', area:'30.300,63 m²',
-    hot:{x:0.5639,y:0.4292},
+    hot:{x:0.4265,y:0.3474},
     ref:'A força da paisagem natural e das águas da Bahia.',
     titulo:'Quadras de areia, praça de eventos e contemplação',
     itens:['4 quadras de areia','Gourmet Lago Abaeté','Playground Lago Abaeté','Praça de eventos','Estar contemplação','Guarda-barcos'],
-    fotos:['aba-aerea','aba-orla','aba-deck','aba-gourmet','aba-praca','aba-convivencia'] },
+    fotos:['aba-aerea','aba-orla','aba-deck','aba-gourmet','aba-praca'] },
 
   { id:'rdf', letra:'E', nome:'Rodrigo de Freitas', area:'23.123,18 m²',
-    hot:{x:0.8005,y:0.6596},
+    hot:{x:0.4054,y:0.5233},
     ref:'A convivência entre cidade, água e movimento no Rio de Janeiro.',
     titulo:'Piscinas, jogos, bar e academia',
     itens:['Piscina semi-olímpica','Piscina orgânica com borda infinita','Bar','Sala de poker','Sala de jogos','Banheiros e vestiário','Academia','Praça kids'],
@@ -86,7 +102,7 @@ const ORLAS = [
            'rdf-bar-2','rdf-bar','rdf-cozinha','rdf-lavanderia','rdf-academia-2','rdf-academia','rdf-kids-2','rdf-kids'] },
 
   { id:'paranoa', letra:'D', nome:'Paranoá', area:'24.972,31 m²',
-    hot:{x:0.8282,y:0.8619},
+    hot:{x:0.4080,y:0.7045},
     ref:'A paisagem que acompanha a escala e os eixos de Brasília.',
     titulo:'Tênis, gourmet e estar à beira da água',
     itens:['Quadras de tênis','Gourmet Lago Paranoá','Playground Lago Paranoá','Pergolados e estar'],
@@ -97,29 +113,63 @@ const ORLAS = [
     ref:'A água integrada à arquitetura e à identidade de Belo Horizonte.',
     titulo:'Campo, quadra e mini golf',
     itens:['Gourmet Lago Pampulha','Mini golf','Quadra poliesportiva','Futmesa','Quadra de futebol','Bancos de arquibancada com pergolados'],
-    fotos:['pam-campo','pam-orla','pam-gourmet','contemplacao'] }
+    fotos:['pam-campo','pam-orla','pam-gourmet'] }
 ];
 
-const LOTE_STEPS = [
-  ['Rua',    'A chegada acontece pela frente do lote, com paisagismo e arquitetura que comunicam que o alto padrão começa antes da casa.'],
-  ['Casa',   'A residência ocupa a frente do terreno. Terrenos de 620 a 2.900 m² permitem implantações generosas, sem disputa por espaço.'],
-  ['Jardim', 'O recuo de fundos vira jardim. É ele que faz a transição entre a arquitetura e a paisagem — e que garante privacidade entre vizinhos.'],
-  ['Deck',   'O deck é a extensão da sala para fora. É onde a casa passa a receber, e onde a rotina encontra a água.'],
-  ['Lago',   'O fundo do lote encosta no lago. Não é uma vista emprestada: é uma condição de moradia presente na própria implantação.']
+/* Pontos do masterplan que não são orlas de lago. O marcador dourado
+   significa "não é orla" — o aviso de externo ao empreendimento aparece
+   no conteúdo, e só onde se aplica (Centro de Eventos e Marina). */
+/* Pontos do masterplan que não são orlas de lago. Marcador dourado
+   significa "não é orla"; o aviso de externo ao empreendimento aparece
+   no conteúdo, e só onde se aplica (Centro de Eventos e Marina).
+   Usam a MESMA tela das orlas — muda só o rótulo da barra e a
+   navegação do rodapé, que percorre os pontos em vez dos lagos. */
+const PONTOS = [
+  { id:'portaria', nome:'Portaria e Centro de Eventos',
+    hot:{x:0.345,y:0.935},
+    ref:'A chegada e o espaço de receber, no acesso ao empreendimento.',
+    titulo:'Acesso controlado e centro de eventos',
+    fotos:['chegada','aba-convivencia','ce-salao','ce-externo','ce-porte','ce-deck','ce-hall'],
+    grupos:[
+      { titulo:'Portarias', itens:[
+          'Portaria social','Portaria de serviços',
+          'Acessos organizados para moradores, visitantes e equipes','Controle de acesso',
+          'Reconhecimento facial','Monitoramento por câmeras',
+          'Vigilância patrimonial','Perímetro protegido por muro'] },
+      { titulo:'Centro de Eventos', nota:'Centro de Eventos é externo ao empreendimento.', itens:[
+          'Espaço climatizado com mais de 2.000 m²','Estacionamento com porte-cochère',
+          'Docas de carga e descarga','Três camarins com vestiário',
+          'Cozinha industrial','Deck externo com vista para o lago'] }
+    ] },
+
+  { id:'bosque', nome:'Rua do Bosque',
+    hot:{x:0.7572,y:0.4011},
+    ref:'O encontro entre a alameda arborizada e a mata preservada.',
+    titulo:'Alameda, trilha e mata nativa',
+    fotos:['bosque-alameda','bosque-entardecer','caminho-lagos-2','contemplacao'],
+    grupos:[
+      { itens:[
+          'Alameda arborizada entre os lotes e a mata',
+          'Trilha no bosque','Calçada larga e ciclismo de lazer',
+          'Paisagismo com florada sazonal','Vista para a lâmina d\u2019água'] }
+    ] },
+
+  { id:'marina', nome:'Marina',
+    hot:{x:0.4595,y:0.108},
+    ref:'O acesso ao rio Teles Pires, a partir do empreendimento.',
+    titulo:'Rampa, deck e restaurante flutuante',
+    fotos:['marina'],
+    grupos:[
+      { nota:'Marina é externa ao empreendimento.', itens:[
+          'Rampa de acesso ao rio Teles Pires','Deck','Restaurante flutuante'] }
+    ] }
 ];
 
-const EXTERNOS = [
-  { img:'ce-salao', titulo:'Centro de eventos',
-    itens:['Espaço climatizado com mais de 2.000 m²','Estacionamento com porte-cochère','Docas de carga e descarga','Três camarins com vestiário','Cozinha industrial','Deck externo com vista para o lago'],
-    fotos:['ce-salao','ce-externo','ce-porte','ce-deck','ce-hall'] },
-  { img:'marina', titulo:'Marina',
-    itens:['Rampa de acesso ao rio Teles Pires','Deck','Restaurante flutuante'],
-    fotos:['marina'] }
-];
+
 
 const RAIL = [
   ['lugar','O lugar'], ['plano','A implantação'], ['orla','As orlas'],
-  ['lote','O lote'], ['externos','Externos'], ['contato','Contato']
+  ['lote','O lote'], ['contato','Contato']
 ];
 
 /* ─────────────────────────────────────────────────────────
@@ -141,7 +191,8 @@ function ir(nome, opt){
   if(nome === 'attract'){ atrair.start(); } else { atrair.stop(); }
   if(nome === 'abertura'){ abertura.start(); } else { abertura.stop(); }
   if(nome === 'plano') plano.ajustar(true);
-  if(nome === 'orla') orla.mostrar(opt && opt.orla != null ? opt.orla : orla.i);
+  if(nome === 'orla') orla.mostrar(opt && opt.orla != null ? opt.orla : orla.i,
+                                   opt && opt.tipo ? opt.tipo : undefined);
   if(nome === 'lugar') lugar.ir(0);
   if(nome === 'lote') lote.reset();
 
@@ -155,7 +206,7 @@ function marcarRail(nome){
 }
 
 function montarRails(){
-  ['#rail','#rail2','#rail3','#rail4','#rail5'].forEach(sel=>{
+  ['#rail','#rail2','#rail4','#rail5'].forEach(sel=>{
     const r = $(sel); if(!r) return;
     r.innerHTML = RAIL.map(([id,rot])=>`<button data-nav="${id}">${rot}</button>`).join('');
   });
@@ -243,21 +294,34 @@ const lugar = (function(){
   const track = $('#lugarTrack'), dots = $('#lugarDots'), pos = $('#lugarPos');
   let i = 0;
 
-  track.innerHTML = LUGAR.map(p=>{
+  track.innerHTML = LUGAR.map((p,k)=>{
     const caps = (p.caps||[]).map(c=>`<span class="stack-caps">${c}</span>`).join('');
     const scr  = p.script ? `<span class="stack-script">${p.script}</span>` : '';
+    const capsFim = (p.capsFim||[]).map(c=>`<span class="stack-caps">${c}</span>`).join('');
     const copy = (p.copy||[]).map(c=>`<p class="lugar-copy">${c}</p>`).join('');
-    const faces = p.faces ? `<div class="faces">${p.faces.map(([f,n])=>
-      `<div class="face"><img src="${THU(f)}" alt="${n}"><span>${n}</span></div>`).join('')}</div>` : '';
-    const refs = p.refs ? `<div class="refs">${p.refs.map(([n,d])=>
-      `<div class="ref"><b>${n}</b><span>${d}</span></div>`).join('')}</div>` : '';
+    const faces = p.faces ? `<div class="faces">${p.faces.map(([f,n,esc,fun])=>
+      `<div class="face"><img src="${THU(f)}" alt="${n}">
+         <b>${n}</b>${esc ? `<em>${esc}</em>` : ''}${fun ? `<span>${fun}</span>` : ''}
+       </div>`).join('')}</div>` : '';
+    const refs = p.refs ? `<div class="refs">${p.refs.map(([n,d,cor])=>
+      `<div class="ref">${cor ? `<i class="ref-cor" style="background:${cor}"></i>` : ''}<b>${n}</b><span>${d}</span></div>`).join('')}</div>` : '';
+    /* mapas e vistas aéreas ganham "ampliar": têm detalhe que merece tela cheia */
+    const lupa = p.zoom ? `<span class="btn btn-solid lugar-zoom">ampliar</span>` : '';
     return `<div class="lugar-panel">
-      <div class="lugar-fig"><img src="${IMG(p.img)}" alt=""></div>
-      <div class="lugar-txt"><p class="stack">${caps}${scr}</p>${copy}${faces}${refs}</div>
+      <div class="lugar-fig${p.zoom ? ' tem-zoom' : ''}" data-k="${k}"><img src="${IMG(p.img)}" alt="">${lupa}</div>
+      <div class="lugar-txt"><p class="stack">${caps}${scr}${capsFim}</p>${copy}${faces}${refs}</div>
     </div>`;
   }).join('');
 
+  $$('.lugar-fig.tem-zoom', track).forEach(fig=>{
+    fig.addEventListener('click', ()=>{
+      if(deslizouAgora(track.parentElement)) return;
+      lb.abrir([LUGAR[+fig.dataset.k].img], 0);
+    });
+  });
+
   dots.innerHTML = LUGAR.map(()=>'<i></i>').join('');
+  const tot = $('#lugarTot'); if(tot) tot.textContent = LUGAR.length;
 
   function ir_(n){
     i = Math.max(0, Math.min(LUGAR.length - 1, n));
@@ -296,15 +360,24 @@ const plano = (function(){
     ajustar(true);
   });
 
-  /* pontos de toque — camada fixa, tamanho constante em qualquer zoom */
-  capa.innerHTML = ORLAS.map((o,k)=>
-    `<div class="hot" data-k="${k}"><span class="hot-dot"></span><span class="hot-lbl">${o.nome}</span></div>`
-  ).join('');
+  /* pontos de toque — camada fixa, tamanho constante em qualquer zoom.
+     Dois tipos misturados no mesmo mapa: lagos (abrem a tela de orla,
+     com navegação entre si) e pontos externos (abrem uma sobreposição
+     própria, sem entrar na navegação das quatro orlas). */
+  capa.innerHTML =
+    ORLAS.map((o,k)=>
+      `<div class="hot" data-tipo="orla" data-k="${k}"><span class="hot-dot"></span><span class="hot-lbl">${o.nome}</span></div>`
+    ).join('') +
+    PONTOS.map((p,k)=>
+      `<div class="hot hot-externo" data-tipo="ponto" data-k="${k}"><span class="hot-dot"></span><span class="hot-lbl">${p.nome}</span></div>`
+    ).join('');
+
   $$('.hot', capa).forEach(h=>{
     h.addEventListener('click', e=>{
       e.stopPropagation();
       if(arrastou) return;
-      ir('orla', { orla: +h.dataset.k });
+      const k = +h.dataset.k;
+      ir('orla', { orla:k, tipo:h.dataset.tipo });
     });
   });
 
@@ -321,7 +394,8 @@ const plano = (function(){
     limites();
     canvas.style.transform = `translate(${tx}px,${ty}px) scale(${s})`;
     $$('.hot', capa).forEach(h=>{
-      const o = ORLAS[+h.dataset.k];
+      const lista = h.dataset.tipo === 'orla' ? ORLAS : PONTOS;
+      const o = lista[+h.dataset.k];
       h.style.left = (tx + o.hot.x * iw * s) + 'px';
       h.style.top  = (ty + o.hot.y * ih * s) + 'px';
     });
@@ -411,12 +485,12 @@ const plano = (function(){
   ).join('');
   $$('#lakeList li').forEach(li=>{
     const k = +li.dataset.k;
-    li.addEventListener('click', ()=> ir('orla', { orla:k }));
+    li.addEventListener('click', ()=> ir('orla', { orla:k, tipo:'orla' }));
     li.addEventListener('pointerenter', ()=> destaque(k, true));
     li.addEventListener('pointerleave', ()=> destaque(k, false));
   });
   function destaque(k, on){
-    const h = $(`.hot[data-k="${k}"]`, capa);
+    const h = $(`.hot[data-tipo="orla"][data-k="${k}"]`, capa);
     if(h) h.style.filter = on ? 'drop-shadow(0 0 1.4vh rgba(169,148,95,.95))' : '';
   }
 
@@ -433,33 +507,51 @@ const orla = (function(){
         title = $('#orlaTitle'), ref = $('#orlaRef'), prog = $('#orlaProg'),
         barT = $('#orlaBarTitle'), area = $('#orlaArea'),
         prev = $('#orlaPrev'), next = $('#orlaNext'), mid = $('#orlaMid');
-  let i = 0, f = 0;
+  let tipo = 'orla', i = 0, f = 0;
 
-  function mostrar(k){
-    i = (k + ORLAS.length) % ORLAS.length;
-    const o = ORLAS[i];
-    barT.textContent = 'Orla Lago ' + o.nome;
-    area.textContent = o.area;
-    ref.textContent = o.ref;
-    title.textContent = o.titulo;
-    prog.innerHTML = o.itens.map(t=>`<li>${t}</li>`).join('');
+  const lista = ()=> tipo === 'orla' ? ORLAS : PONTOS;
+
+  function mostrar(k, novoTipo){
+    if(novoTipo) tipo = novoTipo;
+    const L = lista();
+    i = (k + L.length) % L.length;
+    const o = L[i];
+
+    barT.textContent = tipo === 'orla' ? 'Orla Lago ' + o.nome : o.nome;
+    area.textContent = o.area || '';
+    ref.textContent  = o.ref || '';
+    title.textContent = o.titulo || '';
+
+    /* orlas têm uma lista simples; pontos podem ter grupos, cada um com
+       título e um aviso próprio (o "externo ao empreendimento") */
+    const grupos = o.grupos || [{ itens:o.itens }];
+    prog.innerHTML = grupos.map(g=>`
+      <div class="prog-grupo">
+        ${g.titulo ? `<p class="side-rule">${g.titulo}</p>` : ''}
+        ${g.nota ? `<p class="ovl-flag">${g.nota}</p>` : ''}
+        <ul class="prog">${g.itens.map(t=>`<li>${t}</li>`).join('')}</ul>
+      </div>`).join('');
+
     strip.innerHTML = o.fotos.map((n,j)=>
       `<img src="${THU(n)}" data-j="${j}" alt="">`).join('');
     $$('img', strip).forEach(t=> t.addEventListener('click', ()=> foto(+t.dataset.j)));
-    const a = ORLAS[(i - 1 + ORLAS.length) % ORLAS.length];
-    const b = ORLAS[(i + 1) % ORLAS.length];
-    prev.textContent = '‹ orla lago ' + a.nome;
-    next.textContent = 'orla lago ' + b.nome + ' ›';
-    mid.textContent = o.nome + ' · ' + (i + 1) + ' de ' + ORLAS.length;
+
+    const a = L[(i - 1 + L.length) % L.length];
+    const b = L[(i + 1) % L.length];
+    const rot = n => tipo === 'orla' ? 'orla lago ' + n : n;
+    prev.textContent = L.length > 1 ? '‹ ' + rot(a.nome) : '';
+    next.textContent = L.length > 1 ? rot(b.nome) + ' ›' : '';
+    mid.textContent  = o.nome + ' · ' + (i + 1) + ' de ' + L.length;
+
     foto(0);
   }
 
   function foto(j){
-    const o = ORLAS[i];
+    const o = lista()[i];
     f = (j + o.fotos.length) % o.fotos.length;
     const nome = o.fotos[f];
     const primeira = !heroImg.getAttribute('src');
-    if(primeira){                       /* nada a substituir: entra direto */
+    if(primeira){
       heroImg.src = IMG(nome);
       heroImg.style.opacity = 1;
       cap.textContent = LEGENDAS[nome] || '';
@@ -476,15 +568,15 @@ const orla = (function(){
 
   prev.addEventListener('click', ()=> mostrar(i - 1));
   next.addEventListener('click', ()=> mostrar(i + 1));
-  $('#orlaZoom').addEventListener('click', ()=> lb.abrir(ORLAS[i].fotos, f));
+  $('#orlaZoom').addEventListener('click', ()=> lb.abrir(lista()[i].fotos, f));
   $('#orlaHero').addEventListener('click', e=>{
     if(e.target.closest('.btn')) return;
     if(deslizouAgora($('#orlaHero'))) return;
-    lb.abrir(ORLAS[i].fotos, f);
+    lb.abrir(lista()[i].fotos, f);
   });
   gesto($('#orlaHero'), { esquerda:()=> foto(f + 1), direita:()=> foto(f - 1) });
 
-  return { mostrar, get i(){ return i; } };
+  return { mostrar, get i(){ return i; }, get tipo(){ return tipo; } };
 })();
 
 /* ─────────────────────────────────────────────────────────
@@ -492,79 +584,15 @@ const orla = (function(){
    ───────────────────────────────────────────────────────── */
 
 const lote = (function(){
-  const box = $('#corte');
-  const svg = `
-  <svg viewBox="0 0 1000 420" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%">
-    <defs>
-      <linearGradient id="ag" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#3F7C79"/><stop offset="1" stop-color="#14403F"/>
-      </linearGradient>
-    </defs>
-    <!-- terreno -->
-    <path d="M0 300 L1000 300 L1000 420 L0 420 Z" fill="#5E4638"/>
-    <!-- lago -->
-    <path d="M760 300 Q820 296 1000 300 L1000 420 L760 420 Z" fill="url(#ag)"/>
-    <path d="M760 300 Q820 296 1000 300" fill="none" stroke="#A9945F" stroke-width="1.5" opacity=".55"/>
-    <!-- rua -->
-    <rect x="0" y="300" width="150" height="14" fill="#3A2A22"/>
-    <!-- casa -->
-    <path d="M210 300 L210 196 L300 150 L390 196 L390 300 Z" fill="#F5EEE3" opacity=".92"/>
-    <rect x="252" y="232" width="40" height="68" fill="#4C362D" opacity=".55"/>
-    <!-- jardim -->
-    <path d="M400 300 q40 -22 80 0" fill="none" stroke="#8FA37C" stroke-width="3" opacity=".7"/>
-    <circle cx="440" cy="278" r="16" fill="#6E8760" opacity=".65"/>
-    <circle cx="560" cy="284" r="12" fill="#6E8760" opacity=".5"/>
-    <!-- deck -->
-    <rect x="640" y="292" width="120" height="10" fill="#8B6F52"/>
-    <g stroke="#5E4638" stroke-width="1" opacity=".6">
-      <line x1="660" y1="292" x2="660" y2="302"/><line x1="690" y1="292" x2="690" y2="302"/>
-      <line x1="720" y1="292" x2="720" y2="302"/><line x1="750" y1="292" x2="750" y2="302"/>
-    </g>
-    <!-- linha de leitura -->
-    <line x1="60" y1="352" x2="900" y2="352" stroke="#A9945F" stroke-width="1" opacity=".35"/>
-    ${LOTE_STEPS.map((st,k)=>{
-      const x = 75 + k * 200;
-      return `<g class="step-hit" data-k="${k}">
-        <circle cx="${x}" cy="352" r="26" fill="transparent"/>
-        <circle class="step-node" cx="${x}" cy="352" r="6" fill="#C9B896"/>
-        <text class="step-lbl" x="${x}" y="386" text-anchor="middle">${st[0]}</text>
-      </g>`;
-    }).join('')}
-  </svg>
-  <p class="step-desc" id="stepDesc"></p>`;
-  box.innerHTML = svg;
-
-  const desc = $('#stepDesc');
-  function sel(k){
-    $$('.step-hit', box).forEach((g,j)=> g.classList.toggle('on', j === k));
-    desc.classList.remove('on');
-    setTimeout(()=>{ desc.textContent = LOTE_STEPS[k][1]; desc.classList.add('on'); }, 160);
-  }
-  $$('.step-hit', box).forEach(g=> g.addEventListener('click', ()=> sel(+g.dataset.k)));
-
-  return { reset(){ sel(4); } };
+  const stage = $('#loteStage'), cap = $('#loteCap');
+  const FOTOS = ['rio-fim-de-tarde','agua-estar','caminho-lagos','par-deck'];
+  stage.addEventListener('click', ()=> lb.abrir(FOTOS, 0));
+  /* LEGENDAS só existe no fim do arquivo: a legenda entra ao abrir a tela */
+  return { reset(){ cap.textContent = LEGENDAS[FOTOS[0]] || ''; } };
 })();
 
 /* ─────────────────────────────────────────────────────────
-   9 · EXTERNOS
-   ───────────────────────────────────────────────────────── */
-
-$('#extBody').innerHTML = EXTERNOS.map((e,k)=>`
-  <div class="ext-card" data-k="${k}">
-    <img src="${IMG(e.img)}" alt="">
-    <div class="ext-shade"></div>
-    <div class="ext-txt">
-      <span class="kicker">externo ao empreendimento</span>
-      <h2>${e.titulo}</h2>
-      <ul class="ext-list">${e.itens.map(i=>`<li>${i}</li>`).join('')}</ul>
-    </div>
-  </div>`).join('');
-$$('.ext-card').forEach(c=>{
-  c.addEventListener('click', ()=> lb.abrir(EXTERNOS[+c.dataset.k].fotos, 0));
-});
-
-/* ─────────────────────────────────────────────────────────
-   10 · GALERIA EM TELA CHEIA
+   9 · GALERIA EM TELA CHEIA
    ───────────────────────────────────────────────────────── */
 
 const lb = (function(){
@@ -600,8 +628,7 @@ const lb = (function(){
 
 $$('[data-ovl]').forEach(b=>{
   b.addEventListener('click', ()=>{
-    const id = b.dataset.ovl === 'ficha' ? '#ovlFicha' : '#ovlSeguranca';
-    $(id).classList.add('is-on');
+    $('#ovlFicha').classList.add('is-on');
     sessao.reiniciar();
   });
 });
@@ -699,7 +726,9 @@ const LEGENDAS = {
 "aba-praca":"Praça de eventos","aba-convivencia":"A convivência ganha outra dimensão",
 "ce-externo":"Centro de eventos","ce-salao":"Centro de eventos",
 "ce-porte":"Porte-cochère do centro de eventos","ce-deck":"Deck do centro de eventos",
-"ce-hall":"Hall de entrada","marina":"Marina · rio Teles Pires","fechamento":"À altura da sua história"
+"ce-hall":"Hall de entrada","marina":"Marina · rio Teles Pires","fechamento":"À altura da sua história",
+"loc-mapa":"O morar mais exclusivo do Centro-Oeste","loc-acessos":"Localização e acessos",
+"bosque-alameda":"Rua do Bosque · alameda arborizada","bosque-entardecer":"Rua do Bosque ao entardecer"
 };
 
 /* ─────────────────────────────────────────────────────────

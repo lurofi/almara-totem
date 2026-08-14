@@ -35,7 +35,7 @@
   <section class="screen" id="s-lugar" data-screen="lugar">
     <header class="bar">
       <img class="bar-mark" src="brand/logotipo-sm.png" alt="Almara São Manoel">
-      <span class="bar-meta"><span id="lugarPos">1</span> de 5 · o lugar</span>
+      <span class="bar-meta"><span id="lugarPos">1</span> de <span id="lugarTot">8</span> · o lugar</span>
     </header>
     <div class="lugar-track" id="lugarTrack"></div>
     <div class="lugar-dots" id="lugarDots"></div>
@@ -47,7 +47,6 @@
     <header class="bar">
       <img class="bar-mark" src="brand/logotipo-sm.png" alt="Almara São Manoel">
       <div class="bar-acts">
-        <button class="btn btn-ghost" data-ovl="seguranca">segurança</button>
         <button class="btn" data-ovl="ficha">ficha técnica</button>
       </div>
     </header>
@@ -70,7 +69,7 @@
 
       <div class="plano-stage" id="planoStage">
         <div class="plano-canvas" id="planoCanvas">
-          <img class="plano-img" id="planoImg" src="brand/masterplan.jpg" alt="Masterplan Almara São Manoel" draggable="false">
+          <img class="plano-img" id="planoImg" src="brand/masterplan.webp" alt="Masterplan Almara São Manoel" draggable="false">
         </div>
         <div class="plano-hots" id="planoHots"></div>
         <div class="plano-tools">
@@ -106,7 +105,7 @@
       <aside class="orla-side">
         <p class="kicker" id="orlaRef"></p>
         <h2 class="orla-title" id="orlaTitle"></h2>
-        <ul class="prog" id="orlaProg"></ul>
+        <div id="orlaProg"></div>
       </aside>
     </div>
 
@@ -134,22 +133,13 @@
         <p class="lote-copy">Não é apenas uma vista. É uma condição de moradia presente na própria implantação.</p>
         <p class="side-rule">todos os lotes com fundos para os lagos</p>
       </aside>
-      <div class="lote-stage">
-        <div class="corte" id="corte"></div>
-        <p class="lote-hint">toque em cada etapa do percurso</p>
+      <div class="lote-stage" id="loteStage">
+        <img class="lote-img" id="loteImg" src="img/rio-fim-de-tarde.jpg" alt="" draggable="false">
+        <div class="lote-cap"><span id="loteCap"></span></div>
+        <span class="btn btn-solid lote-zoom">ampliar</span>
       </div>
     </div>
     <nav class="rail" id="rail2"></nav>
-  </section>
-
-  <!-- ══════════ 06 · EXTERNOS ══════════ -->
-  <section class="screen" id="s-externos" data-screen="externos">
-    <header class="bar">
-      <img class="bar-mark" src="brand/logotipo-sm.png" alt="Almara São Manoel">
-      <span class="bar-meta">externos ao empreendimento</span>
-    </header>
-    <div class="ext-body" id="extBody"></div>
-    <nav class="rail" id="rail3"></nav>
   </section>
 
   <!-- ══════════ 07 · CONTATO ══════════ -->
@@ -204,34 +194,6 @@
           <p class="ovl-flag">37,86% da área comercializável destinada aos lagos.<br>Todos os lotes com fundos para os lagos.</p>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="ovl" id="ovlSeguranca">
-    <div class="ovl-card">
-      <div class="ovl-head">
-        <h2>Segurança planeada em cada acesso</h2>
-        <button class="btn btn-ghost" data-close>fechar</button>
-      </div>
-      <div class="ovl-cols">
-        <div>
-          <ul class="prog">
-            <li>Portaria social</li>
-            <li>Portaria de serviços</li>
-            <li>Acessos organizados para moradores, visitantes e equipes</li>
-            <li>Controle de acesso</li>
-          </ul>
-        </div>
-        <div>
-          <ul class="prog">
-            <li>Reconhecimento facial</li>
-            <li>Monitoramento por câmeras</li>
-            <li>Vigilância patrimonial</li>
-            <li>Perímetro protegido por muro</li>
-          </ul>
-        </div>
-      </div>
-      <div class="ovl-img"><img src="img/chegada.jpg" alt="Chegada e portaria" draggable="false"></div>
     </div>
   </div>
 
