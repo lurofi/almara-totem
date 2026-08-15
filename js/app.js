@@ -32,48 +32,45 @@ const MANIFESTO = [
 ];
 
 const LUGAR = [
-  { img:'sorriso-aerea',
+  { img:'sorriso-aerea', aba:'Sorriso',
     caps:['Sorriso amadureceu.','O morar também.'],
     copy:['Construída por trabalho, produção e visão de futuro, Sorriso alcançou uma nova dimensão.',
           'O Almara nasce desse momento: para quem já reconhece o valor de escolher bem e procura, dentro da própria cidade, uma forma mais completa de morar.'] },
 
-  { img:'loc-mapa', zoom:true,
+  { img:'loc-mapa', zoom:true, aba:'Localização',
     caps:['O morar mais'], script:'exclusivo', capsFim:['do Centro-Oeste'],
     copy:['O Almara fica na margem do rio, a poucos minutos do centro de Sorriso — perto do que a cidade oferece, longe do que ela tem de barulho.',
           'Praça das Fontes, Igreja Matriz e a sede da Epicentro Empreendimentos ficam no mesmo eixo de deslocamento.'] },
 
-  { img:'loc-acessos', zoom:true,
+  { img:'loc-acessos', zoom:true, aba:'Acessos', video:'trajeto', videoRot:'ver o trajeto',
     caps:['Dois acessos','para'], script:'chegar.',
     copy:['O empreendimento é servido por duas rotas independentes, que ligam o Almara à malha urbana de Sorriso por caminhos distintos.',
           'A redundância de acesso preserva a chegada tranquila em qualquer horário e em qualquer condição de tráfego.'],
     refs:[['Acesso 01','Pela MT-560, contornando a área de plantio a oeste.','#E0812B'],
           ['Acesso 02','Pelo eixo urbano a leste, ligando ao centro da cidade.','#2BD46B']] },
 
-  { img:'implantacao-aerea', zoom:true,
+  { img:'implantacao-aerea', zoom:true, aba:'Vista aérea',
     caps:['O lugar,','visto de'], script:'cima.',
     copy:['Cinquenta e seis hectares desenhados entre a mata nativa e o rio, com a silhueta de Sorriso no horizonte.',
-          'A escala do projeto aparece inteira: as faixas de lotes, os quatro lagos e a mata preservada que fecha o conjunto.'] },
+          'A escala do projeto aparece inteira: as faixas de terrenos, os quatro lagos e a mata preservada que fecha o conjunto.'] },
 
-  { img:'agua-teal',
+  { img:'epicentro-socios', aba:'Epicentro', zoom:true,
     caps:['Um projeto nasce','de uma'], script:'visão.',
     copy:['À frente da Epicentro Empreendimentos, Thiago Alves Silva e Osmar Mello reúnem experiências construídas em diferentes setores da economia de Sorriso e do Centro-Oeste.',
           'Engenharia, energia, conectividade e agronegócio formam uma experiência multissetorial que amplia a leitura sobre a cidade e a região.'],
-    faces:[['thiago','Thiago Alves Silva'],['osmar','Osmar Mello']] },
+  },
 
-  { img:'inspiracao',
+  { img:'inspiracao', aba:'Inspiração',
     caps:['Inspirado no mundo.','Feito para'], script:'Sorriso.',
     copy:['Xangri-Lá, Miami e endereços argentinos compartilham uma ideia: a água, a arquitetura e a paisagem podem se organizar para que a casa tenha uma relação contínua com o seu entorno.',
           'No Almara, esse repertório ganha uma interpretação própria, desenhada para Sorriso e para a vida cotidiana de quem escolhe morar aqui.'] },
 
-  { img:'referencias',
+  { img:'referencias', aba:'Referências', zoom:true,
     caps:['Quatro referências'], script:'brasileiras.',
-    copy:['Os nomes dos lagos foram escolhidos a partir de espelhos d\u2019água que se tornaram parte da identidade de diferentes cidades brasileiras.'],
-    refs:[['Pampulha','A água integrada à arquitetura e à identidade de Belo Horizonte.'],
-          ['Paranoá','A paisagem que acompanha a escala e os eixos de Brasília.'],
-          ['Rodrigo de Freitas','A convivência entre cidade, água e movimento no Rio de Janeiro.'],
-          ['Abaeté','A força da paisagem natural e das águas da Bahia.']] },
+    copy:['Os nomes dos lagos foram escolhidos a partir de espelhos d\u2019água que se tornaram parte da identidade de diferentes cidades brasileiras.',
+          'Cada referência carrega uma relação própria entre água, arquitetura, paisagem e vida cotidiana. No Almara, elas ganham uma nova interpretação, reunidas em um projeto residencial pensado para Sorriso.'] },
 
-  { img:'caminho-lagos',
+  { img:'caminho-lagos', aba:'Projetistas',
     caps:['A paisagem','começa no'], script:'desenho.',
     copy:['Arquitetura e paisagismo foram pensados para criar unidade sem apagar a individualidade de cada residência.',
           'O resultado é um lugar em que a arquitetura não se impõe à paisagem. Ela passa a fazer parte dela.'],
@@ -84,7 +81,7 @@ const LUGAR = [
 
 /* Pontos de toque no masterplan. Obtidos por segmentação de cor da lâmina
    d'água — cada ponto fica na borda esquerda de cada lago (não mais no
-   centro geométrico), para não cobrir a lâmina d'água nem os lotes. */
+   centro geométrico), para não cobrir a lâmina d'água nem os terrenos. */
 const ORLAS = [
   { id:'abaete', letra:'F', nome:'Abaeté', area:'30.300,63 m²',
     hot:{x:0.4265,y:0.3474},
@@ -149,7 +146,7 @@ const PONTOS = [
     fotos:['bosque-alameda','bosque-entardecer','caminho-lagos-2','contemplacao'],
     grupos:[
       { itens:[
-          'Alameda arborizada entre os lotes e a mata',
+          'Alameda arborizada entre os terrenos e a mata',
           'Trilha no bosque','Calçada larga e ciclismo de lazer',
           'Paisagismo com florada sazonal','Vista para a lâmina d\u2019água'] }
     ] },
@@ -168,8 +165,8 @@ const PONTOS = [
 
 
 const RAIL = [
-  ['lugar','O lugar'], ['plano','A implantação'], ['orla','As orlas'],
-  ['lote','O lote'], ['contato','Contato']
+  ['lugar','A Origem'], ['plano','O Almara'], ['orla','As orlas'],
+  ['lote','O Terreno'], ['contato','Contato']
 ];
 
 /* ─────────────────────────────────────────────────────────
@@ -307,9 +304,11 @@ const lugar = (function(){
       `<div class="ref">${cor ? `<i class="ref-cor" style="background:${cor}"></i>` : ''}<b>${n}</b><span>${d}</span></div>`).join('')}</div>` : '';
     /* mapas e vistas aéreas ganham "ampliar": têm detalhe que merece tela cheia */
     const lupa = p.zoom ? `<span class="btn btn-solid lugar-zoom">ampliar</span>` : '';
+    const filme = p.video
+      ? `<button class="btn btn-solid lugar-filme" data-video="${p.video}">▶ ${p.videoRot || 'assistir'}</button>` : '';
     return `<div class="lugar-panel">
       <div class="lugar-fig${p.zoom ? ' tem-zoom' : ''}" data-k="${k}"><img src="${IMG(p.img)}" alt="">${lupa}</div>
-      <div class="lugar-txt"><p class="stack">${caps}${scr}${capsFim}</p>${copy}${faces}${refs}</div>
+      <div class="lugar-txt"><p class="stack">${caps}${scr}${capsFim}</p>${copy}${faces}${refs}${filme}</div>
     </div>`;
   }).join('');
 
@@ -320,20 +319,22 @@ const lugar = (function(){
     });
   });
 
-  dots.innerHTML = LUGAR.map(()=>'<i></i>').join('');
+  /* abas nomeadas em vez de pontinhos: com 8 painéis, ninguém descobre
+     o conteúdo só deslizando às cegas */
+  dots.innerHTML = LUGAR.map((p,k)=>`<button data-k="${k}">${p.aba || (k+1)}</button>`).join('');
   const tot = $('#lugarTot'); if(tot) tot.textContent = LUGAR.length;
 
   function ir_(n){
     i = Math.max(0, Math.min(LUGAR.length - 1, n));
     track.style.transform = `translateX(${-i * 100}%)`;
-    $$('i', dots).forEach((d,k)=> d.classList.toggle('on', k === i));
+    $$('button', dots).forEach((d,k)=> d.classList.toggle('on', k === i));
     pos.textContent = i + 1;
   }
   gesto(track.parentElement, {
     esquerda: ()=> ir_(i + 1),
     direita:  ()=> ir_(i - 1)
   });
-  $$('i', dots).forEach((d,k)=> d.addEventListener('click', ()=> ir_(k)));
+  $$('button', dots).forEach((d,k)=> d.addEventListener('click', ()=> ir_(k)));
 
   return { ir: ir_ };
 })();
@@ -580,7 +581,7 @@ const orla = (function(){
 })();
 
 /* ─────────────────────────────────────────────────────────
-   8 · O LOTE — corte esquemático
+   8 · O TERRENO
    ───────────────────────────────────────────────────────── */
 
 const lote = (function(){
@@ -623,6 +624,51 @@ const lb = (function(){
 })();
 
 /* ─────────────────────────────────────────────────────────
+   10 · VÍDEOS (YouTube)
+   ───────────────────────────────────────────────────────── */
+
+const FILMES = {
+  conceito: { id:'Uz4YaT74mBI', titulo:'Filme conceito' },
+  trajeto:  { id:'6HspBrFMRgI', titulo:'O trajeto até o Almara' },
+  tour:     { id:'aodIKd_L-GE', titulo:'Tour 3D pelo empreendimento' }
+};
+
+const video = (function(){
+  const cx = $('#vid'), slot = $('#vidSlot'), tit = $('#vidTit');
+
+  function abrir(id, titulo){
+    /* youtube-nocookie + rel=0 + modestbranding deixam o player o mais
+       neutro possível; o iframe só é criado na hora e destruído ao
+       fechar, para o vídeo não seguir tocando por trás */
+    const par = new URLSearchParams({
+      autoplay:'1', rel:'0', modestbranding:'1', playsinline:'1',
+      iv_load_policy:'3', fs:'0', color:'white'
+    });
+    slot.innerHTML =
+      `<iframe src="https://www.youtube-nocookie.com/embed/${id}?${par}"
+               frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+    tit.textContent = titulo || '';
+    cx.classList.add('is-on');
+    sessao.reiniciar();
+  }
+  function fechar(){ cx.classList.remove('is-on'); slot.innerHTML = ''; }
+
+  $('[data-close]', cx).addEventListener('click', fechar);
+  cx.addEventListener('click', e=>{ if(e.target === cx) fechar(); });
+  return { abrir, fechar };
+})();
+
+/* qualquer elemento com data-video abre o player */
+document.addEventListener('click', e=>{
+  const b = e.target.closest('[data-video]');
+  if(!b) return;
+  e.stopPropagation();
+  const chave = b.dataset.video;
+  const f = FILMES[chave] || { id:chave, titulo:b.dataset.videoTit || '' };
+  video.abrir(f.id, f.titulo);
+});
+
+/* ─────────────────────────────────────────────────────────
    11 · SOBREPOSIÇÕES
    ───────────────────────────────────────────────────────── */
 
@@ -641,6 +687,7 @@ $$('.ovl').forEach(o=>{
 function fecharTudo(){
   $$('.ovl').forEach(o=> o.classList.remove('is-on'));
   lb.fechar();
+  video.fechar();
 }
 
 /* ─────────────────────────────────────────────────────────
@@ -707,7 +754,7 @@ const LEGENDAS = {
 "thiago":"Thiago Alves Silva","osmar":"Osmar Mello","inspiracao":"Repertório internacional",
 "rio-fim-de-tarde":"Perspectiva dos lagos","referencias":"Quatro referências brasileiras",
 "time-1":"Maristela Fedrizzi","time-2":"Ronaldo Moraes","time-3":"Eduarda Lucini",
-"implantacao-aerea":"Vista aérea da implantação","ficha-capa":"Almara São Manoel",
+"implantacao-aerea":"Vista aérea da implantação","epicentro-socios":"Epicentro Empreendimentos · Thiago Alves Silva e Osmar Mello","ficha-capa":"Almara São Manoel",
 "chegada":"Chegada e portaria","caminho-lagos":"Caminho entre os lagos",
 "caminho-lagos-2":"Caminho entre os lagos","marca-agua":"Almara São Manoel",
 "agua-encontros":"A água dá forma aos encontros","rdf-lago":"Orla Lago Rodrigo de Freitas",
