@@ -47,6 +47,8 @@
     <header class="bar">
       <img class="bar-mark" src="brand/logotipo-sm.png" alt="Almara São Manoel">
       <div class="bar-acts">
+        <button class="btn btn-ghost" data-video="conceito">▶ filme conceito</button>
+        <button class="btn btn-ghost" data-video="tour">▶ tour 3D</button>
         <button class="btn" data-ovl="ficha">ficha técnica</button>
       </div>
     </header>
@@ -57,7 +59,7 @@
 
         <div class="figs">
           <div class="fig"><b>56,7</b><span>hectares</span></div>
-          <div class="fig"><b>263</b><span>lotes residenciais</span></div>
+          <div class="fig"><b>263</b><span>terrenos residenciais</span></div>
           <div class="fig"><b>84.991</b><span>m² de lagos</span></div>
         </div>
 
@@ -116,7 +118,7 @@
     </nav>
   </section>
 
-  <!-- ══════════ 05 · O LOTE ══════════ -->
+  <!-- ══════════ 05 · O TERRENO ══════════ -->
   <section class="screen" id="s-lote" data-screen="lote">
     <header class="bar">
       <img class="bar-mark" src="brand/logotipo-sm.png" alt="Almara São Manoel">
@@ -125,13 +127,13 @@
     <div class="lote-body">
       <aside class="lote-side">
         <p class="stack">
-          <span class="stack-caps">O fundo do lote</span>
+          <span class="stack-caps">O fundo do terreno</span>
           <span class="stack-caps">é o começo da</span>
           <span class="stack-script">paisagem.</span>
         </p>
-        <p class="lote-copy">No Almara, os lotes foram pensados com fundos para os lagos. A residência se abre para o jardim, para a luz e para uma paisagem que acompanha a casa todos os dias.</p>
+        <p class="lote-copy">No Almara, os terrenos foram pensados com fundos para os lagos. A residência se abre para o jardim, para a luz e para uma paisagem que acompanha a casa todos os dias.</p>
         <p class="lote-copy">Não é apenas uma vista. É uma condição de moradia presente na própria implantação.</p>
-        <p class="side-rule">todos os lotes com fundos para os lagos</p>
+        <p class="side-rule">todos os terrenos com fundos para os lagos</p>
       </aside>
       <div class="lote-stage" id="loteStage">
         <img class="lote-img" id="loteImg" src="img/rio-fim-de-tarde.jpg" alt="" draggable="false">
@@ -191,10 +193,17 @@
             <div><dt>Rodrigo de Freitas</dt><dd>23.123,18 m²</dd></div>
             <div><dt>Pampulha</dt><dd>6.595,01 m²</dd></div>
           </dl>
-          <p class="ovl-flag">37,86% da área comercializável destinada aos lagos.<br>Todos os lotes com fundos para os lagos.</p>
+          <p class="ovl-flag">37,86% da área comercializável destinada aos lagos.<br>Todos os terrenos com fundos para os lagos.</p>
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- player de vídeo em tela cheia -->
+  <div class="vid" id="vid">
+    <div class="vid-quadro"><div id="vidSlot"></div></div>
+    <button class="btn btn-ghost vid-close" data-close>fechar ✕</button>
+    <span class="vid-tit" id="vidTit"></span>
   </div>
 
   <!-- galeria em tela cheia -->
